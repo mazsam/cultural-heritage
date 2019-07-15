@@ -9,14 +9,14 @@ use App\Building;
 class CulturalHeritageController extends Controller
 {
     function getAllHeritage(Request $request) {
-        $category = $request->input('category') ?: [];
+        $category = $request->input('category');
         $search = $request->input('search');
         $search = '%'. $search . '%';
 
         $district = Building::where('name', 'like', $search)->with(['category', 'district', 'images', 'videos'])->get();
 
-        if (count($category) > 0) {
-            $district = Building::where('name', 'like', $search)->whereIn('category_id', $category)->with(['category', 'district', 'images'])->get();
+        if ($category) {
+            $district = Building::where('name', 'like', $search)->where('category_id', $category)->with(['category', 'district', 'images'])->get();
         }
 
         return response()->json([
