@@ -16,7 +16,7 @@ class CulturalHeritageController extends Controller
         $district = Building::where('name', 'like', $search)->with(['category', 'district', 'images', 'videos'])->get();
 
         if ($category) {
-            $district = Building::where('name', 'like', $search)->where('category_id', $category)->with(['category', 'district', 'images'])->get();
+            $district = Building::where('name', 'like', $search)->whereIn('category_id', explode(",", $category))->with(['category', 'district', 'images'])->get();
         }
 
         return response()->json([
