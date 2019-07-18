@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/user-input', 'UserInputController@index');
+Route::get('/user-input/tambah', 'UserInputController@add');
+Route::post('/user-input/store', 'UserInputController@store');
+Route::get('/user-input/del/{id}', 'UserInputController@del');
+Route::get('/user-input/edit/{id}', 'UserInputController@edit');
+Route::post('/user-input/update', 'UserInputController@update');
