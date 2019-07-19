@@ -22,6 +22,7 @@ class CreateTableBuilding extends Migration
             $table->char('lng');
             $table->integer('district_id');
             $table->integer('category_id');
+            $table->char('image');
             $table->timestamps();
         });
     }
