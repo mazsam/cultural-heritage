@@ -27,6 +27,9 @@ class UserInputController extends Controller
 
     public function store(Request $request)
     {
+        error_reporting(E_ALL);
+        ini_set("display_errors", 1);
+
         $building = new Building();
 
         $file = $request->file('file');
@@ -38,9 +41,9 @@ class UserInputController extends Controller
         $ukuran_file = $file->getSize();
         // Proses Upload File
         $destinationPath = 'uploads';
-        $file->move($destinationPath,$nama_file);
+        $file->move($destinationPath, $nama_file);
 
-        $building->image = URL::to('/')."/".$destinationPath."/".$nama_file;
+        $building->image = URL::to('/') . "/" . $destinationPath . "/" . $nama_file;
 
         $building->name = $request->nama;
         $building->address = $request->address;

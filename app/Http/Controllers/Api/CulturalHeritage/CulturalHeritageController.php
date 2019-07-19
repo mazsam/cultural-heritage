@@ -44,6 +44,9 @@ class CulturalHeritageController extends Controller
 
     public function inputData(Request $request)
     {
+        error_reporting(E_ALL);
+        ini_set("display_errors", 1);
+
         $building = new Building();
 
         $file = $request->file('file');
