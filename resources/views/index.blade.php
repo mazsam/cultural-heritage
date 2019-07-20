@@ -28,7 +28,7 @@
             <th>Lng</th>
             <th>Kategory</th>
             <th>Kecamatan</th>
-            <th>Image</th>
+            <th>Thumbnail</th>
             <th>Total Image</th>
             <th>Action</th>
         </tr>
