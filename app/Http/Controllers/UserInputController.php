@@ -15,8 +15,9 @@ class UserInputController extends Controller
 {
     public function index()
     {
-        $buildings =  Building::with('category', 'district')->get();
+        $buildings =  Building::with('category', 'district', 'images')->get();
 
+        // dd($buildings->toArray());
         return view('index', ['buildings' => $buildings]);
     }
 

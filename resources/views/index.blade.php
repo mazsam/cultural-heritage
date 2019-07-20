@@ -29,6 +29,7 @@
             <th>Kategory</th>
             <th>Kecamatan</th>
             <th>Image</th>
+            <th>Total Image</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -44,7 +45,7 @@
             <td>{{ $building->category['name']}}</td>
             <td>{{ $building->district['name']}}</td>
             <td>{{ $building->image }}</td>
-
+            <td>{{ count($building->images)}}</td>
 			<td>
 				<a href="/user-input/edit/{{ $building->id }}">Edit</a>
 				|
