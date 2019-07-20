@@ -12,6 +12,7 @@ class BuildingImages extends Model
         'building_id',
         'image_id'
     ];
+    public $timestamps = false;
 
     public function building()
     {

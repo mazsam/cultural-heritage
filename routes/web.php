@@ -21,3 +21,5 @@ Route::post('/user-input/store', 'UserInputController@store');
 Route::get('/user-input/del/{id}', 'UserInputController@del');
 Route::get('/user-input/edit/{id}', 'UserInputController@edit');
 Route::post('/user-input/update', 'UserInputController@update');
+Route::get('/user-input/addImage', 'UserInputController@addImage');
+Route::post('/user-input/inputImage', 'UserInputController@inputImage');

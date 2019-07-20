@@ -8,6 +8,8 @@ use App\Building;
 use App\Category;
 use App\District;
 use Illuminate\Support\Facades\URL;
+use App\Images;
+use App\BuildingImages;
 
 class UserInputController extends Controller
 {
@@ -88,5 +90,46 @@ class UserInputController extends Controller
         $building->save();
 
         return redirect('/user-input');
+    }
+
+    public function addImage()
+    {
+        $building = Building::get();
+        return view('add-image', ['building' => $building]);
+    }
+
+    public function inputImage(Request $request)
+    {
+        error_reporting(E_ALL);
+        ini_set("display_errors", 1);
+
+        $file = $request->file('file');
+        // dd($file);
+        // Mendapatkan Nama File
+        $nama_file = $file->getClientOriginalName();
+        // Mendapatkan Extension File
+        $extension = $file->getClientOriginalExtension();
+        // Mendapatkan Ukuran File
+        $ukuran_file = $file->getSize();
+        // Proses Upload File
+        $destinationPath = 'uploads';
+        $file->move($destinationPath, $nama_file);
+
+        $images = new Images();
+
+        $buildingId = $request->input('building_id');
+        $images->url = URL::to('/') . "/" . $destinationPath . "/" . $nama_file;
+        $images->name = $request->input('name');
+
+        $images->save();
+
+        $idImage = $images->id;
+
+        $buildingImage = new BuildingImages();
+        $buildingImage->building_id = $buildingId;
+        $buildingImage->image_id = $idImage;
+        $buildingImage->save();
+
+        return redirect('user-input/addImage')->with('status', 'Berhasil simpan image ' . $request->input('name'));
     }
 }

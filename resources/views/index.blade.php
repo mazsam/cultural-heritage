@@ -14,6 +14,7 @@
 
 
     <a href="/user-input/tambah"><button type="button" class="btn btn-primary"> + Tambah Bangunan Baru</button></a>
+    <a href="/user-input/addImage"><button type="button" class="btn btn-primary"> + Tambah Gambar Baru</button></a>
 	<br/>
 	<br/>
 
