@@ -44,7 +44,7 @@
             <td>{{ $building->lng }}</td>
             <td>{{ $building->category['name']}}</td>
             <td>{{ $building->district['name']}}</td>
-            <td>{{ $building->image }}</td>
+            <td><img style="max-height: 75px;" src="{{$building->image}}"></td>
             <td>{{ count($building->images)}}</td>
 			<td>
 				<a href="/user-input/edit/{{ $building->id }}">Edit</a>
