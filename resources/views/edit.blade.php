@@ -38,6 +38,10 @@
                 <label for="email">Longitude:</label>
                 <input class="form-control" type="text" name="lng" required="required" value="{{ $building['lng'] }}">
             </div>
+            <div class="form-group">
+                <label for="desc">Description: </label>
+                <textarea name="description" class="form-control" id="desc" rows="6">{{ $building['description'] }}</textarea>
+            </div>
             Kecamatan <br><select name="category">
                 @foreach($district as $d)
                 <option {{$building['district_id'] === $d['id'] ? 'selected' : ''}} value="{{ $d['id']}}">{{ $d['name']}}</option>

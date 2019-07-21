@@ -39,6 +39,10 @@
                 <input class="form-control" type="text" name="lng" required="required">
             </div>
             <div class="form-group">
+                <label for="desc">Description: </label>
+                <textarea name="description" class="form-control" id="desc" rows="6"></textarea>
+            </div>
+            <div class="form-group">
                 <label for="email">Image:</label>
                 <input class="form-control" type="file" name="file" required="required">
             </div>

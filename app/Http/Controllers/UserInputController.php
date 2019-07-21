@@ -55,6 +55,7 @@ class UserInputController extends Controller
         $building->lng = $request->lng;
         $building->category_id = $request->category  ? $request->category : 1;
         $building->district_id = $request->district ? $request->district : 1;
+        $building->description = $request->description;
 
         $building->save();
 
@@ -87,6 +88,7 @@ class UserInputController extends Controller
         $building->lng = $request->lng;
         $building->category_id = $request->category  ? $request->category : 1;
         $building->district_id = $request->district ? $request->district : 1;
+        $building->description = $request->description;
 
         $building->save();
 

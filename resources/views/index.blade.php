@@ -28,6 +28,7 @@
             <th>Lng</th>
             <th>Kategory</th>
             <th>Kecamatan</th>
+            <th>Description</th>
             <th>Thumbnail</th>
             <th>Total Image</th>
             <th>Action</th>
@@ -36,6 +37,10 @@
     <tbody>
         @foreach($buildings as $building)
         {{-- {{ dd($building->category['name']) }} --}}
+        @php
+            $string = substr($building->description, 0, 50);
+            $description = substr($string, 0, strrpos($string, ' ')) . " ...";
+        @endphp
 		<tr>
 			<td>{{ $building->name }}</td>
             <td>{{ $building->address }}</td>
@@ -44,7 +49,8 @@
             <td>{{ $building->lng }}</td>
             <td>{{ $building->category['name']}}</td>
             <td>{{ $building->district['name']}}</td>
-            <td><img style="max-height: 75px;" src="{{$building->image}}"></td>
+            <td style="font-size: 12px;">{{ $description }}</td>
+            <td><img style="max-height: 50px;" src="{{$building->image}}"></td>
             <td>{{ count($building->images)}}</td>
 			<td>
 				<a href="/user-input/edit/{{ $building->id }}">Edit</a>
