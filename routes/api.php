@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/heritages', 'Api\CulturalHeritage\CulturalHeritageController@getAllHeritage');
 Route::get('/heritages/{id}', 'Api\CulturalHeritage\CulturalHeritageController@getHeritageId');
 Route::post('/post', 'Api\CulturalHeritage\CulturalHeritageController@inputData');
+Route::get('/heritagesFilter', 'Api\CulturalHeritage\CulturalHeritageController@getAllHeritageByFilter');

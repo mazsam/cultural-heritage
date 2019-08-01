@@ -79,4 +79,23 @@ class CulturalHeritageController extends Controller
             'data' => $building,
         ], 200);
     }
+
+    function getAllHeritageByFilter(Request $request)
+    {
+        $category = $request->input('category');
+        $districtId = $request->input('district');
+
+        $district = Building::with(['category', 'district', 'images', 'videos'])->get();
+
+        if ($category && $districtId) {
+            $category = strlen($category) > 1 ? explode(",", $category) : [$category];
+            $district = Building::where(['category_id' => $category, 'district_id' => $districtId])->with(['category', 'district', 'images'])->get();
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Success',
+            'data' => $district ?: []
+        ], 200);
+    }
 }
