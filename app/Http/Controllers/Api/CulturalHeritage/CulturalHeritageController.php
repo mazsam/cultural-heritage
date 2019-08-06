@@ -85,17 +85,21 @@ class CulturalHeritageController extends Controller
         $category = $request->input('category');
         $districtId = $request->input('district');
 
-        $district = Building::with(['category', 'district', 'images', 'videos'])->get();
+        $building = Building::with(['category', 'district', 'images', 'videos']);
 
-        if ($category && $districtId) {
-            $category = strlen($category) > 1 ? explode(",", $category) : [$category];
-            $district = Building::where(['category_id' => $category, 'district_id' => $districtId])->with(['category', 'district', 'images'])->get();
+        if ($category) {
+            $building->where('category_id', $category);
+        }
+
+        if($districtId) {
+            $building->where('category_id', $districtId);
+            // $district = Building::where('category_id', $category)->where('district_id', $districtId)->with(['category', 'district', 'images'])->toSql();
         }
 
         return response()->json([
             'success' => true,
             'message' => 'Success',
-            'data' => $district ?: []
+            'data' => $building->get() ?: []
         ], 200);
     }
 }
