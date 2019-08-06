@@ -42,7 +42,7 @@
                 <label for="desc">Description: </label>
                 <textarea name="description" class="form-control" id="desc" rows="6">{{ $building['description'] }}</textarea>
             </div>
-            Kecamatan <br><select name="category">
+            Kecamatan <br><select name="district">
                 @foreach($district as $d)
                 <option {{$building['district_id'] === $d['id'] ? 'selected' : ''}} value="{{ $d['id']}}">{{ $d['name']}}</option>
                 @endforeach
