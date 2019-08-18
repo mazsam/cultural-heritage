@@ -82,8 +82,8 @@ class CulturalHeritageController extends Controller
 
     function getAllHeritageByFilter(Request $request)
     {
-        $category = $request->input('category');
-        $districtId = $request->input('district');
+        $category = (int) $request->input('category');
+        $districtId = (int) $request->input('district');
 
         $building = Building::with(['category', 'district', 'images', 'videos']);
 
@@ -91,8 +91,8 @@ class CulturalHeritageController extends Controller
             $building->where('category_id', $category);
         }
 
-        if($districtId) {
-            $building->where('category_id', $districtId);
+        if ($districtId) {
+            $building->where('district_id', $districtId);
             // $district = Building::where('category_id', $category)->where('district_id', $districtId)->with(['category', 'district', 'images'])->toSql();
         }
 
